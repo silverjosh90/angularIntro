@@ -1,0 +1,38 @@
+.upvote {
+  font-weight: bold;
+  cursor: pointer;
+}
+.downvote {
+  font-weight: bold;
+  cursor: pointer;
+
+}
+
+.green {
+  color: green;
+}
+.black {
+  color: black;
+}
+
+.menu {
+  float: left;
+  list-style: none;
+  padding: 15px;
+  color: white;
+}
+
+.dropmenu {
+  color: black;
+  list-decoration: none;
+}
+
+.topBar {
+  background-color: #5591C8;
+  height: 50px;
+  width: 100%;
+}
+
+.middleBar {
+  background-color: ##FF0041;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="deLaSilverstein">
+
+<head>
+  <meta charset="utf-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body>
+
+<div ng-controller="directive">
+  <ul>
+    <li ng-repeat="name in names">
+      {{ name }}
+    </li>
+  </ul>
+</div>
+
+<div ng-controller="placed"
+  <ul>
+    <li ng-repeat="(keys, values) in capitals">
+      {{ keys }}
+    </li>
+  </ul>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="js/controller.js" charset="utf-8"></script>
+</body>
+
+</html>

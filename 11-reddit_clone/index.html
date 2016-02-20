@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="moshe">
+
+<head>
+  <meta charset="utf-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body ng-controller="mainController">
+  <div class="container">
+    <div class="topBar">
+      <ul>
+        <li class="menu" ng-click="addToggle()">Add a Post</li>
+        <li class="menu"><input type="text"></input></li>
+        <li class="menu"> <span ng-click="toggleDropDown()">Sort</span>
+            <ul ng-show="dropdown">
+              <li ng-click="sortDate()" class="dropmenu">Date</li>
+              <li ng-click="sortKarma()" class="dropmenu">Karma</li>
+              <li ng-click="sortTitle()" class="dropmenu">title</li>
+
+            </ul>
+            </li>
+
+    </div>
+    <div class="middleBar" style="clear: both;">
+    <div class="postList">
+      <form ng-submit="addPost()" class="form-group">
+        <input ng-show="postShow" class="form-control" ng-model="title" type="text"> <br>
+        <input ng-show="postShow" class="form-control" type="text" ng-model="subreddit"> <br>
+        <input ng-show="postShow" class="form-control" ype="text" ng-model="imageURL"> <br>
+        <textarea ng-show="postShow" class="form-control" ng-model="description"></textarea> <br> <br>
+        <input type="submit" ng-show="postShow" class="btn btn-default">
+      </form>
+        <div ng-repeat="post in posts | orderBy: 'title'">
+
+          <div class="indvidualPost" id={{post.number}}>
+            <img class="pic" src={{post.imageurl}} alt="">
+            <h4 class="postTitle">{{post.title}}</h4>
+            <p>{{post.date | date:'medium'}}</p>
+            <div>
+              <p ng-model="karma">{{karma * post.multiply| number:0}}</p>
+              <div class="upvote" ng-class="color" ng-click="upvote()">UpVote</div>
+              <div class="downvote"  ng-class="colored" ng-click="downvote()">DownVote</div>
+            </div>
+            <p class="postParagraph">{{post.description}}</p>
+            <div class="comment">
+              <h3 ng-class={{post.number}} ng-click="toggleComment(post)">comment</h3>
+              <form ng-submit="commentPost(post)" ng-show='post.commentShow'>
+                <textarea ng-model="$.individualComment"></textarea>
+                <input type="submit" value="submit comment">
+
+              </form>
+              <div ng-repeat="comment in post.comments | orderBy: '-date'">
+                <p>{{comment.commented}}</p>
+                <p>{{comment.date | date: 'medium'}}</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+  </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="js/script.js" charset="utf-8"></script>
+</body>
+<!-- <img class="pic" src="http://placehold.it/150x150" alt="">
+<h4 class="postTitle">What is Lorem Ipsum?</h4>
+<div>
+  <p ng-model="karma">{{karma}}</p>
+  <div class="upvote" ng-class="color" ng-click="upvote()">UpVote</div>
+  <div class="downvote"  ng-class="colored" ng-click="downvote()">DownVote</div>
+</div>
+<p class="postParagraph">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<div class="comment">
+  <h3 ng-click="toggleComment()">comment</h3>
+  <form ng-submit="commentPost()">
+    <textarea ng-show="commentShow" ng-model="individualComment"></textarea>
+    <input type="submit" ng-show="commentShow" value="submit comment">
+
+  </form>
+  <div ng-repeat="comment in comments | orderBy: '-date'">
+    <p>{{comment.commented}}</p>
+    <p>{{comment.date | date: 'medium'}}</p>
+  </div> -->
+</html>

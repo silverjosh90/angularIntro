@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+</head>
+
+<!-- apply angular app and controller to our body -->
+<body ng-app="validationApp" ng-controller="mainController">
+<div class="container">
+<div class="col-sm-8 col-sm-offset-2">
+
+    <!-- PAGE HEADER -->
+    <div class="page-header"><h1>AngularJS Form Validation</h1></div>
+
+    <!-- FORM -->
+    <!-- pass in the variable if our form is valid or invalid -->
+  <form name="userForm" ng-submit="submitForm()" novalidate>
+    <label for="name" >Name:</label>
+    <input type="text" ng-model="named"  name="name" required> <br>
+    <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">Enter your name</p>
+    <button type="submit" ng-disable="userForm.$invalid" ng-model="submit">Submit</button>
+
+
+
+  </form>
+</div><!-- col-sm-8 -->
+</div><!-- /container -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="js/script.js" charset="utf-8"></script>
+</body>
+
+</html>

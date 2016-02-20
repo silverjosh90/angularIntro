@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app>
+
+<head>
+  <meta charset="utf-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body>
+
+<h1> Mad libs </h1>
+<label for="name">Boy's name </label>
+  <br>
+<input type="text" name="name" ng-model="josh.name">
+<br> 
+
+<label for="adjective">Adjective</label>
+<br>
+<input type="text" name="adjective" ng-model="josh.adjective">
+<br>
+
+<label for="pluralNoun">Plural Noun</label>
+<br>
+<input type="text" name="pluralNoun" ng-model="josh.pluralNoun">
+<br>
+
+<label for="pNoun">Plural Noun</label>
+<br>
+<input type="text" name="pNoun" ng-model="josh.pNoun">
+<br>
+
+
+<label for="pInsect">Plural Insect</label>
+<br>
+<input type="text" name="pInsect" ng-model="josh.pInsect">
+<br>
+
+<label for="plurNoun">Plural noun</label>
+<br>
+<input type="text" name="plurNoun" ng-model="josh.plurNoun">
+<br>
+
+<label for="sVerb">A verb ending in "s"</label>
+<br>
+<input type="text" name="sVerb" ng-model="josh.sVerb">
+
+<p>I'm in love with {{josh.name}} He's so {{josh.adjective}}! He has big flat {{josh.pluralNoun}} and when our {{josh.pNoun}} meet, I get {{josh.pInsect}} in my stomach. I've fallen for him like a ton of {{josh.plurNoun}} and he {{josh.sVerb}} me, too. But I think he's got another girlfriend. What should I do?</p>
+
+<button ng-click="josh = null">Clear</button>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="js/script.js" charset="utf-8"></script>
+</body>
+
+</html>

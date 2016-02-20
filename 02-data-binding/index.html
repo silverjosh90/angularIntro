@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app>
+
+<head>
+  <meta charset="utf-8">
+  <title>{{ name }}</title>
+  <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body>
+
+<input id="textField" type="text" placeholder="What is your name?" ng-model="name" ng-init="name='Bojack'">
+<h1>Hola, my name is {{name}}</h1>
+<select class="dropDown" name="selection" ng-model="selection">
+  <option value="Dog">Dog</option>
+  <option value="Cat">Cat</option>
+  <option value="Lamb">Lamb</option>
+</select>
+
+<h3>{{selection}}</h3>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="js/script.js" charset="utf-8"></script>
+</body>
+
+</html>
