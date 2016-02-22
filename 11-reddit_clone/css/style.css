@@ -1,3 +1,7 @@
+.body {
+  background-color: #fcf4fa;
+}
+
 .upvote {
   font-weight: bold;
   cursor: pointer;
@@ -23,16 +27,43 @@
 }
 
 .dropmenu {
-  color: black;
-  list-decoration: none;
+  list-style: none;
+  color: white;
+  background-color: #5591C8;
+  padding: 30px;
+  height: 30px;
+}
+
+.dropDownMenu{
 }
 
 .topBar {
   background-color: #5591C8;
   height: 50px;
   width: 100%;
+  border-radius: 5px;
 }
 
 .middleBar {
-  background-color: ##FF0041;
+}
+
+.ng-enter {
+  -webkit-transition: 1s;
+  transition: 1s;
+  opacity: 0;
+}
+
+.ng-enter-active {
+  opacity: 1;
+}
+
+.ng-leave {
+  -webkit-transition: 1s;
+  transition: 1s;
+
+  opacity: 0;
+}
+
+.ng-leave-active {
+  opacity: 1;
 }

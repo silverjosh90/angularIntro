@@ -1,12 +1,10 @@
 
-var app= angular.module('moshe', [])
-app.controller('mainController',function($scope){
-  $scope.karma = 122
-  var upvoter = false
-  var downvoter = false
+var app= angular.module('moshe', ['ngAnimate'])
+app.controller('mainController', function($scope){
+  // $scope.karma = 122
   $scope.comments = []
   $scope.posts = []
-  // $scope.individualComment = ""
+  $scope.filtercriteria = "karma"
   $scope.addToggle = function() {
     $scope.postShow = !$scope.postShow
   }
@@ -14,17 +12,15 @@ app.controller('mainController',function($scope){
   $scope.toggleDropDown = function() {
     $scope.dropdown = !$scope.dropdown
   }
-  $scope.sortDate = function() {
-    console.log("Date");
-    $scope.filtercriteria = 'date'
-  }
-  $scope.sortKarma = function() {
-    console.log("Karma");
-    $scope.filtercriteria = 'karma'
-  }
-  $scope.sortTitle = function() {
-    console.log("Title");
-    $scope.filtercriteria = 'title'
+  $scope.sort = function(word) {
+    if ($scope.filtercriteria ===  "'"+word+"'") {
+      $scope.filtercriteria = "'-"+word+"'"
+      console.log("-"+word);
+    }
+    else {
+    $scope.filtercriteria = "'"+word+"'"
+    console.log(word);
+    }
   }
 
   $scope.addPost = function() {
@@ -39,42 +35,46 @@ app.controller('mainController',function($scope){
     reddit.commentShow = false;
     reddit.comments = []
     reddit.individualComment = null
+    reddit.upvoter = false
+    reddit.downvoter = false
+    reddit.colored = ""
+    reddit.color = ""
     rando = Math.random()
     random = rando * 10
-    reddit.multiply = random
+    reddit.karma = random * 122
     $scope.posts.push(reddit)
 
   }
 
 
 
-  $scope.upvote = function(){
-    upvoter = !upvoter
+  $scope.upvote = function(post){
+    post.upvoter = !post.upvoter
 
-    if (upvoter){
-      $scope.color = 'green'
-      $scope.colored = 'black'
-      $scope.karma += 1
+    if (post.upvoter){
+      post.color = 'green'
+      post.colored = 'black'
+      post.karma += 1
       // $scope.colored = !$scope.colored
     }
     else {
-      $scope.color = 'black'
-      $scope.karma -= 1
+      post.color = 'black'
+      post.karma -= 1
 
     }
 
   }
-  $scope.downvote = function(){
-    downvoter = !downvoter
+  $scope.downvote = function(post){
+    post.downvoter = !post.downvoter
 
-    if (downvoter){
-      $scope.colored = 'green'
-      $scope.color = 'black'
-      $scope.karma -= 1
+    if (post.downvoter){
+      post.colored = 'green'
+      post.color = 'black'
+      post.karma -= 1
     }
     else {
-      $scope.colored = 'black'
-      $scope.karma += 1
+      post.colored = 'black'
+      post.karma += 1
 
     }
 
@@ -85,7 +85,6 @@ app.controller('mainController',function($scope){
   }
   $scope.commentPost = function(post) {
     com = {}
-    console.log($scope.individualComment);
     com.commented = post.individualComment
     com.date = Date.now()
     post.comments.push(com)
