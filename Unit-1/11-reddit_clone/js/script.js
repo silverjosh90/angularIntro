@@ -73,6 +73,10 @@ app.controller('mainController', function($scope){
     $scope.posts.push(reddit)
     $scope.addToggle()
     $scope.colorEvaluator(reddit)
+    $scope.title = null
+    $scope.subreddit = null
+    $scope.imageURL = null
+    $scope.description = null
   }
 
   }
@@ -130,7 +134,7 @@ app.controller('mainController', function($scope){
     post.comments.push(com)
     post.individualComment = null;
     if(post.comments.length > 0) {
-      $scope.commentButton = "Show comments"
+      $scope.commentButton = "Hide comments"
       $scope.toggleCommentShow(post)
     }
   }
