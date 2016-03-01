@@ -2,6 +2,7 @@
 
 
 app.controller('homeController', ['$scope','$http', '$location', 'FoodsService', function($scope, $http, $location, FoodsService){
+  $scope.bag = 0
   console.log("*******");
   $scope.teas = FoodsService.foods;
 var array = []
@@ -13,7 +14,7 @@ for (var i = 0; i < categoryFilter.length; i++) {
       array.push(iteration[d])
     }
 }
-
+$scope.quantities = [1,2,3,4,5,6,7,8,9,10]
 function removeDoubles(input) {
       var newArray = []
 
@@ -35,5 +36,15 @@ function removeDoubles(input) {
   return newArray
   }
   $scope.catFilters = removeDoubles(array)
+
+$scope.addToBag = function(number) {
+  if (number == undefined) {
+    var editedNumber = 1
+    $scope.bag+= 1
+  }
+  else {
+  $scope.bag += Number(number)
+}
+};
 
 }])

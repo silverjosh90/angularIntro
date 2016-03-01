@@ -1,5 +1,10 @@
 
 
+<div class="cart" style="float: right;">
+  <h2>Cart : {{bag}}</h2>
+  <a href=""><h5>Checkout</h5></a>
+</div>
+
 <div class="filterSection">
   <select ng-model="dropFilter">
     <option selected></option>
@@ -9,18 +14,33 @@
 </div>
 
 
-<div class="eachTea" ng-repeat="tea in teas | filter: searchFilter | filter: dropFilter">
+<table>
+<tr >
+<th>Tea</th>
+<th>Information</th>
+</tr>
 
-<h1 class="teaTitle">{{tea.name}}</h1>
-<img src={{tea.imageUrl}} alt="">
-<h5 class="teaPrice"> Price: {{tea.price | currency}}</h5>
-<h5 class="teaCaffeineScale">Caffeine Scale: {{tea.caffeineScale}}</h5>
-<h5 class="teaIngredients">ingredients: <span>{{tea.ingredients}}</span></h5>
-<h5 class="teaRating">Rating: {{tea.rating}}</h5>
-<h5 class="teaStock"> In Stock: {{tea.inStock}}</h5>
-<h5>Category</h5>
-  <ul ng-repeat="cat in tea.categories">
-    <li>{{cat}}</li>
-  </ul>
+<tr class="eachTea" ng-repeat="tea in teas | filter: searchFilter | filter: dropFilter">
+  <td><img src={{tea.imageUrl}}></td>
+  <td>
+    <h1 class="teaTitle">{{tea.name}}</h1>
+    <h5 class="teaPrice"> Price: {{tea.price | money | currency}}</h5>
+    <h5 class="teaCaffeineScale">Caffeine Scale: {{tea.caffeineScale}}</h5>
+    <h5 class="teaIngredients">ingredients: <span>{{tea.ingredients}}</span></h5>
+    <h5 class="teaRating">Rating: {{tea.rating}}</h5>
+    <h5 class="teaStock"> In Stock: <span ng-show={{tea.inStock}}>Yes</span><span ng-show={{!tea.inStock}}>No</span></h5>
+    <h5>Category</h5>
+      <ul ng-repeat="cat in tea.categories">
+        <li>{{cat}}</li>
+      </ul>
+    <div style="float: right;">
+    <label for="selectQuantity"> Quantity</label>
+    <select name="selectQuantity" ng-model="value">
+      <option ng-repeat="quantity in quantities"> {{quantity}}</option>
+    </select>
+    <input type="submit" ng-click="addToCart(value)" value="submit">
+    </div>
+  </td>
+</tr>
 
-</div>
+</table>

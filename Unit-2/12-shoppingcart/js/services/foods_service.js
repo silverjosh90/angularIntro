@@ -126,3 +126,11 @@ app.factory('FoodsService', function () {
      foods: foods
    }
 })
+
+var cart =  []
+
+function addToCart(quantity) {
+  item = {}
+  item.name = this.tea
+  console.log(this);
+}
