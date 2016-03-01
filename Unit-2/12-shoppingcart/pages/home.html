@@ -1,0 +1,26 @@
+
+
+<div class="filterSection">
+  <select ng-model="dropFilter">
+    <option selected></option>
+    <option ng-repeat="category in catFilters">{{category}}</option>
+  </select>
+  <input type="text" ng-model="searchFilter">
+</div>
+
+
+<div class="eachTea" ng-repeat="tea in teas | filter: searchFilter | filter: dropFilter">
+
+<h1 class="teaTitle">{{tea.name}}</h1>
+<img src={{tea.imageUrl}} alt="">
+<h5 class="teaPrice"> Price: {{tea.price | currency}}</h5>
+<h5 class="teaCaffeineScale">Caffeine Scale: {{tea.caffeineScale}}</h5>
+<h5 class="teaIngredients">ingredients: <span>{{tea.ingredients}}</span></h5>
+<h5 class="teaRating">Rating: {{tea.rating}}</h5>
+<h5 class="teaStock"> In Stock: {{tea.inStock}}</h5>
+<h5>Category</h5>
+  <ul ng-repeat="cat in tea.categories">
+    <li>{{cat}}</li>
+  </ul>
+
+</div>

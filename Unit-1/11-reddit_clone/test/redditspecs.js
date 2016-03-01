@@ -48,8 +48,23 @@ describe('On the reddit clone homepage', function() {
     // Check if variable toggle function acts on is true
   })
 
-  // it('When add form is submitted post appears', function() {
-  //
-  // })
+  it('When add form is submitted post appears', function() {
+    browser.get('http://localhost:8080/');
+    element(by.css('#revealAddForm')).click()
+    addPost(function(){
+      expect(element(by.css(".karmaDisplay")).isDisplayed()).toBeTruthy()
+    })
+  })
+
+  it('When a user adds a comment it appears', function(){
+    browser.get('http://localhost:8080/');
+    element(by.css('#revealAddForm')).click()
+    addPost(function(){
+      element(by.model('commentShow')).click()
+      element(by.css("#indcomment")).sendKeys('Post appeared!')
+      element(by.css("#commentSubmit")).click()
+      expect(element(by.css(".commentDisplay")).isDisplayed()).toBeTruthy()
+    })
+  })
 
 })

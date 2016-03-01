@@ -1,4 +1,4 @@
-// angular.module('moshe', [])
-// .controller('test', function($scope){
-//   $scope.derps = ["Hel_lo", "ta_co", "bur_rito"]
-// })
+app.controller('TestController', function($scope){
+  console.log("test");
+  $scope.derps = ["Hex_lo", "tx_co", "bux_rito"]
+});
